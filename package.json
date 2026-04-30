@@ -1,0 +1,19 @@
+{
+  "name": "com.cupkekgames.timesystem",
+  "displayName": "CupkekGames TimeSystem",
+  "version": "0.1.0",
+  "author": {
+    "name": "CupkekGames",
+    "url": "https://www.docs.cupkek.games"
+  },
+  "unity": "6000.0",
+  "documentationUrl": "https://docs.cupkek.games/",
+  "description": "Per-context time scaling for Unity. TimeManager + TimeContext + TimeBundle for hierarchical time control, ITimeScaler implementations for ParticleSystem / TrailRenderer / VisualEffect / PrimeTween, and a Countdown utility.",
+  "keywords": [
+    "Time",
+    "TimeScale",
+    "Countdown",
+    "CupkekGames"
+  ],
+  "dependencies": {}
+}
