@@ -1,7 +1,7 @@
 {
   "name": "com.cupkekgames.timesystem",
   "displayName": "CupkekGames TimeSystem",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "CupkekGames",
     "url": "https://www.docs.cupkek.games"
@@ -15,5 +15,7 @@
     "Countdown",
     "CupkekGames"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "com.cupkekgames.services": "0.1.2"
+  }
 }
