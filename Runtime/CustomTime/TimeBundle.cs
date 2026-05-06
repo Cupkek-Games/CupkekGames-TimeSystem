@@ -11,8 +11,10 @@ namespace CupkekGames.TimeSystem
         public TimeScaleParticleSystem TimeScaleParticleSystem => _timeScaleParticleSystem;
         private TimeScaleTrailRenderer _timeScaleTrailRenderer;
         public TimeScaleTrailRenderer TimeScaleTrailRenderer => _timeScaleTrailRenderer;
+#if PRIMETWEEN_INSTALLED
         private TimeScaleTween _timeScaleTween;
         public TimeScaleTween TimeScaleTween => _timeScaleTween;
+#endif
         private TimeScaleVisualEffect _timeScaleVisualEffect;
         public TimeScaleVisualEffect TimeScaleVisualEffect => _timeScaleVisualEffect;
 
@@ -35,7 +37,9 @@ namespace CupkekGames.TimeSystem
             _timeContext = timeManager.CreateContext();
             _timeScaleParticleSystem = new TimeScaleParticleSystem(_timeContext);
             _timeScaleTrailRenderer = new TimeScaleTrailRenderer(_timeContext);
+#if PRIMETWEEN_INSTALLED
             _timeScaleTween = new TimeScaleTween(_timeContext);
+#endif
             _timeScaleVisualEffect = new TimeScaleVisualEffect(_timeContext);
         }
 
@@ -43,7 +47,9 @@ namespace CupkekGames.TimeSystem
         {
             _timeScaleParticleSystem.Clear();
             _timeScaleTrailRenderer.Clear();
+#if PRIMETWEEN_INSTALLED
             _timeScaleTween.Clear();
+#endif
             _timeScaleVisualEffect.Clear();
 
             foreach (var scaler in _extensionScalers.Values)
@@ -66,7 +72,9 @@ namespace CupkekGames.TimeSystem
         {
             _timeScaleParticleSystem.Dispose();
             _timeScaleTrailRenderer.Dispose();
+#if PRIMETWEEN_INSTALLED
             _timeScaleTween.Dispose();
+#endif
             _timeScaleVisualEffect.Dispose();
 
             foreach (var scaler in _extensionScalers.Values)
