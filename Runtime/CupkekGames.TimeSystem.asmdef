@@ -13,17 +13,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [
-        {
-            "name": "PrimeTween.Runtime",
-            "expression": "",
-            "define": "PRIMETWEEN_INSTALLED"
-        },
-        {
-            "name": "UniTask",
-            "expression": "",
-            "define": "UNITASK_INSTALLED"
-        }
-    ],
+    "versionDefines": [],
     "noEngineReferences": false
 }

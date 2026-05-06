@@ -1,9 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-#if UNITASK_INSTALLED
 using Cysharp.Threading.Tasks;
-#endif
 
 namespace CupkekGames.TimeSystem
 {
@@ -77,11 +75,6 @@ namespace CupkekGames.TimeSystem
             TimeScale = 1f;
         }
 
-#if UNITASK_INSTALLED
-        // UniTask-based delay helpers — only compiled when UniTask is installed.
-        // Consumers without UniTask still get the rest of TimeContext (TimeScale,
-        // events, Update); the async overloads simply aren't available.
-
         /// <summary>
         /// Delays execution for the specified duration using this time context's time scale.
         /// The delay will be affected by time scaling and will pause when TimeScale is 0.
@@ -123,6 +116,5 @@ namespace CupkekGames.TimeSystem
 
             cancellationToken.ThrowIfCancellationRequested();
         }
-#endif
     }
 }

@@ -1,7 +1,3 @@
-// PrimeTween is an optional dependency. When the package is not installed
-// (PRIMETWEEN_INSTALLED define unset by versionDefines), this file is excluded
-// from compilation so the rest of TimeSystem still builds cleanly.
-#if PRIMETWEEN_INSTALLED
 using System.Collections.Generic;
 using PrimeTween;
 using UnityEngine;
@@ -86,4 +82,3 @@ namespace CupkekGames.TimeSystem
         }
     }
 }
-#endif
