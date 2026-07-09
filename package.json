@@ -16,6 +16,6 @@
     "CupkekGames"
   ],
   "dependencies": {
-    "com.cupkekgames.services": "0.1.2"
+    "com.cupkekgames.services": "0.1.4"
   }
 }
