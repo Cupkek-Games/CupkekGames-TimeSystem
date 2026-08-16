@@ -6,7 +6,7 @@
     "name": "CupkekGames",
     "url": "https://www.docs.cupkek.games"
   },
-  "unity": "6000.0",
+  "unity": "6000.5",
   "documentationUrl": "https://docs.cupkek.games/",
   "description": "Per-context time scaling for Unity. TimeManager + TimeContext + TimeBundle for hierarchical time control, ITimeScaler implementations for ParticleSystem / TrailRenderer / VisualEffect / PrimeTween, and a Countdown utility.",
   "keywords": [

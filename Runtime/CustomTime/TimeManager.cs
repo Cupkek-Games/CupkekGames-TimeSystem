@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.Scripting.LifecycleManagement;
 
 namespace CupkekGames.TimeSystem
 {
-    public class TimeManager : MonoBehaviour
+    public partial class TimeManager : MonoBehaviour
     {
+        [AutoStaticsCleanup]
         public static TimeManager Instance { get; private set; }
         private List<TimeContext> _updateContexts = new List<TimeContext>();
         private List<TimeContext> _fixedUpdateContexts = new List<TimeContext>();
