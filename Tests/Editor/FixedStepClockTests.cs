@@ -102,6 +102,30 @@ namespace CupkekGames.TimeSystem.Tests
         }
 
         [Test]
+        public void ClocksFedThenStepped_Interleave_OneTickEach()
+        {
+            var a = new FixedStepClock(20);
+            var b = new FixedStepClock(20);
+            var order = new List<string>();
+            a.OnTick += t => order.Add("a" + t);
+            b.OnTick += t => order.Add("b" + t);
+
+            // One long frame makes two ticks due on each; stepping in turn interleaves them.
+            a.Accumulate(0.1f);
+            b.Accumulate(0.1f);
+            Assert.AreEqual(2, a.Due);
+            bool ran;
+            do
+            {
+                ran = a.Step() | b.Step();
+            } while (ran);
+
+            CollectionAssert.AreEqual(new[] { "a1", "b1", "a2", "b2" }, order);
+            Assert.AreEqual(0, a.Due);
+            Assert.IsFalse(a.Step());
+        }
+
+        [Test]
         public void Reset_StartsAgainFromTickZero()
         {
             var clock = new FixedStepClock(20);
