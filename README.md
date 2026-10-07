@@ -11,6 +11,9 @@ Per-context time scaling for Unity. Run multiple independent timelines (combat, 
 - `ITimeScaler` — apply a `TimeContext` to anything that has a "speed" knob
 - Built-in scalers: `TimeScaleParticleSystem(Mono)`, `TimeScaleTrailRenderer(Mono)`, `TimeScaleVisualEffect`, `TimeScaleTween` (PrimeTween)
 - `Countdown` / `CountdownMono` / `CountdownTimeContext` — pausable countdowns bound to a `TimeContext`
+- `FixedStepClock` — turns scaled time into whole, equal ticks (`OnTick`, `Tick`, `Alpha` for drawing between ticks); bind it to a `TimeContext` and a faster scale runs more ticks, never longer ones, so a simulation stepped on it plays out the same at any frame rate or speed
+
+**Tests** (`CupkekGames.TimeSystem.Tests`, EditMode): `FixedStepClockTests`
 
 ## Dependencies
 
