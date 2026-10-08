@@ -46,6 +46,7 @@ namespace CupkekGames.TimeSystem
       CancellationToken cancellationToken = default,
       bool debug = false)
     {
+      if (intervalSeconds <= 0f) throw new ArgumentOutOfRangeException(nameof(intervalSeconds), intervalSeconds, "A countdown steps by a positive interval.");
       _id = Guid.NewGuid();
       _timeContext = timeContext ?? throw new ArgumentNullException(nameof(timeContext));
       _value = startValue;
@@ -113,7 +114,9 @@ namespace CupkekGames.TimeSystem
 
       _elapsedTime += deltaTime;
 
-      if (_elapsedTime >= _intervalSeconds)
+      // A long frame runs every step it covers, so a countdown keeps the fight's time on slow
+      // frames and at a raised game speed. A step's handler may stop it (its owner died).
+      while (_isRunning && _elapsedTime >= _intervalSeconds)
       {
         _elapsedTime -= _intervalSeconds;
         _value -= _intervalSeconds;

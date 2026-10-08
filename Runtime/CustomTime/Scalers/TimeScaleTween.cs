@@ -6,27 +6,19 @@ namespace CupkekGames.TimeSystem
 {
     /// <summary>
     /// Manages a list of PrimeTween Tweens and updates their time scale according to a TimeContext.
+    /// The tweens run on scaled time (PrimeTween's default), so the game's speed already reaches
+    /// them: each tween's own scale is its context's alone.
     /// </summary>
     public class TimeScaleTween
     {
         public TimeContext Context;
         private List<Tween> _collection = new List<Tween>();
-        private bool _withTimeScale = true;
 
-        public TimeScaleTween(TimeContext context, bool withTimeScale = true)
+        public TimeScaleTween(TimeContext context)
         {
             Context = context ?? TimeManager.Instance?.Global;
             if (Context != null)
                 Context.OnTimeScaleChanged += OnTimeScaleChanged;
-
-            _withTimeScale = withTimeScale;
-        }
-
-        private float GetTimeScale(float timeScale)
-        {
-            if (_withTimeScale)
-                return UnityEngine.Time.timeScale * timeScale;
-            return timeScale;
         }
 
         public void Add(Tween tween)
@@ -38,7 +30,7 @@ namespace CupkekGames.TimeSystem
                     _collection.Add(tween);
                 }
 
-                tween.timeScale = GetTimeScale(Context.TimeScale);
+                tween.timeScale = Context.TimeScale;
             }
         }
 
@@ -53,7 +45,7 @@ namespace CupkekGames.TimeSystem
             {
                 if (tween.isAlive)
                 {
-                    tween.timeScale = GetTimeScale(1f);
+                    tween.timeScale = 1f;
                 }
             }
             _collection.Clear();
@@ -65,7 +57,7 @@ namespace CupkekGames.TimeSystem
             {
                 if (tween.isAlive)
                 {
-                    tween.timeScale = GetTimeScale(timeScale);
+                    tween.timeScale = timeScale;
                 }
                 else
                 {

@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using Unity.Scripting.LifecycleManagement;
 
 namespace CupkekGames.TimeSystem
 {
@@ -43,6 +44,13 @@ namespace CupkekGames.TimeSystem
         public event Action<float> OnTimeScaleChanged;
         public event Action OnPaused;
         public event Action OnResumed;
+
+        /// <summary>
+        /// A context nothing updates: the home of a countdown that only holds a value until it
+        /// starts on a real one (a buff's or a status's duration before its unit's time runs it).
+        /// </summary>
+        [NoAutoStaticsCleanup] // Holds nothing that changes: one for the whole editor session.
+        public static TimeContext Unclocked { get; } = new TimeContext();
 
         internal TimeContext()
         {
