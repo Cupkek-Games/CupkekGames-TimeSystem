@@ -74,6 +74,18 @@ namespace CupkekGames.TimeSystem
 
     private void OnTimeUpdate(float deltaTime)
     {
+      // A time context calls the handlers it held when its update began: a countdown stopped
+      // earlier in that update (its owner died, and its token was cancelled too) still gets
+      // this call, and must not complete.
+      if (!_isRunning)
+      {
+        if (_debug)
+        {
+          Debug.Log("OnTimeUpdate: not running");
+        }
+        return;
+      }
+
       if (_cancellationToken.IsCancellationRequested)
       {
         if (_debug)
@@ -85,11 +97,11 @@ namespace CupkekGames.TimeSystem
         return;
       }
 
-      if (!_isRunning || _value <= _target)
+      if (_value <= _target)
       {
         if (_debug)
         {
-          Debug.Log("OnTimeUpdate: not running or value is less than target");
+          Debug.Log("OnTimeUpdate: value is less than target");
         }
         return;
       }
